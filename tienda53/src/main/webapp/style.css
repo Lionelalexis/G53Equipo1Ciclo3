@@ -1,1 +1,74 @@
-@charset "ISO-8859-1";
+body {
+	background-image: url("fondo_tienda.jpg");
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+.navbar-laravel
+{
+    box-shadow: 0 2px 4px rgba(0,0,0,.04);
+    background-color: beige
+}
+
+.navbar-brand , .nav-link, .my-form, .login-form
+{
+    font-family: Raleway, sans-serif;
+}
+
+.my-form
+{
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.my-form .row
+{
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.login-form
+{
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.login-form .row
+{
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.card {
+
+    width: auto; margin: auto auto;
+    opacity: .8;
+}
+
+.card-header {
+
+  background-color: rgb(226, 226, 226);
+
+}
+
+.card-body {
+
+  background-color: aliceblue;
+  
+}
+
+.colortitulos{
+	
+	color: white;
+	
+}
+
+.nav{
+	
+	background-color: silver;
+	
+}
+
+

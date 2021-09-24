@@ -12,6 +12,14 @@ CREATE TABLE usuarios (
     usuario VARCHAR(255) NOT NULL
 ); 
 
+CREATE TABLE clientes (
+    cedula_cliente BIGINT PRIMARY KEY,
+    nombre_cliente VARCHAR(255) NOT NULL,
+    direccion_cliente VARCHAR(255) NOT NULL,
+    telefono_cliente VARCHAR(255) NOT NULL,
+    email_cliente VARCHAR(255) NOT NULL
+); 
+
 INSERT INTO usuarios VALUES(001,'alex@gmail.com','Alexander Leon','superuser','superuser');
 
 DROP TABLE usuarios;
