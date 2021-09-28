@@ -10,7 +10,7 @@
 <!-- Tamaño de la pantalla -->
 <meta name="viewport" content="width=device-width">
 <!-- titulo de la pestaña -->
-<title>Insertando cliente</title>
+<title>Buscar cliente</title>
 <!-- bootstrap-->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -41,7 +41,6 @@
 	</nav>
 
 	<!-- Navbar modulos-->
-	
 <ul class="nav nav-tabs">
   <li class="nav-item">
     <a class="nav-link active" aria-current="page" href="listausuarios.jsp"><i class="far fa-user-circle"></i> Usuarios</a>
@@ -65,65 +64,68 @@
 
 	<div style="padding-left: 5px">
 		<h1 class="colortitulos">
-			<i class="fas fa-plus-circle"></i> Datos del nuevo cliente
+			<i class="fas fa-search"></i> Buscar un cliente
 		</h1>
 		<div class="container">
-		
-		
+
+
 			<div id="error" class="alert alert-danger visually-hidden"
-					role="alert">Error al crear el cliente, verifique que no exista un cliente con la cedula y cliente dados</div>
-					
+				role="alert">Error al buscar el cliente, el cliente no existe</div>
+
 			<div id="correcto" class="alert alert-success visually-hidden"
-				role="alert">Cliente creado con exito</div>
+				role="alert">Cliente encontrado con exito</div>
 
 			<form id="form1">
+			
+				<div class="input-group mb-3">
+					<span class="input-group-text" id="basic-addon4">Cliente a buscar</span> <input
+						type="text" class="form-control"
+						placeholder="Inserte cedula aqui..."
+						aria-describedby="basic-addon4" required id="identification" >
+				</div>
+				<br>
+				<br>
+				<br>
 				<div class="input-group mb-3">
 					<span class="input-group-text" id="basic-addon1">Cedula</span> <input
 						type="text" class="form-control"
-						placeholder="Inserte cedula aqui..."
-						aria-describedby="basic-addon1" required id="cedula_cliente">
+						aria-describedby="basic-addon1" required id="cedula_cliente" disabled="disabled">
 				</div>
 
 				<div class="input-group mb-3">
-					<span class="input-group-text" id="basic-addon2">Nombre completo</span> <input
+					<span class="input-group-text" id="basic-addon2">Nombre</span> <input
 						type="text" class="form-control"
-						placeholder="Inserte nombre completo aqui..."
-						aria-describedby="basic-addon2" required id="nombre_cliente">
+						aria-describedby="basic-addon2" required id="nombre_cliente" disabled="disabled">
 				</div>
 
 				<div class="input-group mb-3">
 					<span class="input-group-text" id="basic-addon3">Direccion</span>
 					<input type="text" class="form-control"
-						placeholder="Inserte direccion aqui..."
-						aria-describedby="basic-addon3" required id="direccion_cliente">
+						aria-describedby="basic-addon3" required id="direccion_cliente"  disabled="disabled">
 				</div>
 
 				<div class="input-group mb-3">
 					<span class="input-group-text" id="basic-addon4">Telefono</span> <input
 						type="text" class="form-control"
-						placeholder="Inserte telefono aqui..."
-						aria-describedby="basic-addon4" required id="telefono_cliente">
+						aria-describedby="basic-addon4" required id="telefono_cliente"  disabled="disabled">
 				</div>
 
 				<div class="input-group mb-3">
 					<span class="input-group-text" id="basic-addon5">Email</span> <input
 						type="text" class="form-control"
-						placeholder="Inserte Email aqui..."
-						aria-describedby="basic-addon5" required id="email_cliente">
+						aria-describedby="basic-addon5" required id="email_cliente"  disabled="disabled">
 				</div>
-
-
-
-
-
 			</form>
 
-			<button type="button" class="btn btn-success" onclick="enviar()">
-				<i class="fas fa-check"></i> Insertar nuevo cliente
+			<button type="button" class="btn btn-primary" onclick="enviar()">
+				<i class="fas fa-search"></i> Buscar cliente
 			</button>
-
-
-
+			
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
 
 			<h1 class="colortitulos">
 				<i class="fas fa-cogs"></i> Operaciones
@@ -151,64 +153,46 @@
 						<i class="fas fa-search"></i> Listar todos los clientes
 					</button>
 				</div>
-
 			</div>
 		</div>
 
-	
+	</div>
+
 	<script>
 		function enviar() {
-			var x = document.getElementById("telefono_cliente").value;
-			var y = document.getElementById("cedula_cliente").value;
-			var req = new XMLHttpRequest();
-			var coincidencia = false;
-			req.open('GET', 'http://localhost:8080/listarclientes', false);
-			req.send(null);
-			var clientes=null;
+
+				
+				var req = new XMLHttpRequest();
+				var coincidencia = false;
+				var ID=   document.getElementById("identification").value;
+				req.open('GET', 'http://localhost:8080/consultarcliente?cedula_cliente='+ID, false);
+				req.send(null);
+				var cedula_cliente = null;
+				if (req.status == 200)
+					cedula_cliente = JSON.parse(req.responseText);
+				console.log(JSON.parse(req.responseText));
+				
 			
-			if (req.status == 200)
-				clientes=JSON.parse(req.responseText);
-			  	console.log(JSON.parse(req.responseText));
-			  	
-			for (i = 0; i < clientes.length; i++) {
-				console.log(clientes[i].telefono_cliente);
-				console.log(clientes[i].cedula_cliente);
-				
-				if (clientes[i].cedula_cliente ===parseInt(y,10) || clientes[i].telefono_cliente ===x ) {
-					console.log(clientes[i].cedula_cliente +" "+y);	
-					console.log(clientes[i].telefono_cliente +" "+x);
-					coincidencia =true
-					break;
-				}
-				
-				
-				
-			}
-			console.log(coincidencia);	
-			
-			if (coincidencia==false){
-				var formData = new FormData();
-	 			formData.append("cedula_cliente", document.getElementById("cedula_cliente").value);
-	 			formData.append("nombre_cliente", document.getElementById("nombre_cliente").value);
-	 			formData.append("direccion_cliente", document.getElementById("direccion_cliente").value);
-	 			formData.append("telefono_cliente",document.getElementById("telefono_cliente").value);
-	 			formData.append("email_cliente",document.getElementById("email_cliente").value);
-	 			var xhr = new XMLHttpRequest();
-	 			xhr.open("POST", "http://localhost:8080/registrarcliente");
-	 			
+
 				var element = document.getElementById("error");
 				element.classList.add("visually-hidden");
 				var element2 = document.getElementById("correcto");
 				element2.classList.remove("visually-hidden");
 				
-				document.getElementById("cedula_cliente").value = "";
-				document.getElementById("nombre_cliente").value = "";
-				document.getElementById("direccion_cliente").value = "";
-				document.getElementById("telefono_cliente").value = "";
-				document.getElementById("email_cliente").value = "";
-	 			xhr.send(formData);
+				console.log(cedula_cliente.toString());
+				
+			if (cedula_cliente.toString()!=""){
 
-			}else{
+				document.getElementById("cedula_cliente").value = cedula_cliente[0].cedula_cliente;
+				document.getElementById("nombre_cliente").value = cedula_cliente[0].nombre_cliente;
+				document.getElementById("direccion_cliente").value = cedula_cliente[0].direccion_cliente;
+				document.getElementById("telefono_cliente").value = cedula_cliente[0].telefono_cliente;
+				document.getElementById("email_cliente").value = cedula_cliente[0].email_cliente;
+				
+				document.getElementById("identification").value = "";
+			
+
+			} else {
 				var element = document.getElementById("error");
 				element.classList.remove("visually-hidden");
 				var element2 = document.getElementById("correcto");
@@ -218,7 +202,7 @@
 				document.getElementById("direccion_cliente").value = "";
 				document.getElementById("telefono_cliente").value = "";
 				document.getElementById("email_cliente").value = "";
-			}	
+			}
 		}
 	</script>
 

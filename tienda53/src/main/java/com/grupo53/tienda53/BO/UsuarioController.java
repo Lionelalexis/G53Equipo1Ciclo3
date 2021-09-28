@@ -28,7 +28,7 @@ public class UsuarioController {
 	}
 
 	@GetMapping("/consultarusuario")
-	public ArrayList<UsuarioVO> consultarUsuarios(String usuario) {
+	public ArrayList<UsuarioVO> consultarUsuario(String usuario) {
 		UsuarioDAO Dao = new UsuarioDAO();
 		return Dao.consultarUsuario(usuario);
 	}
@@ -47,7 +47,7 @@ public class UsuarioController {
 	@PutMapping("/actualizarusuarios")
 	public void actualizarUsuario(UsuarioVO user) {
 		UsuarioDAO Dao = new UsuarioDAO();
-		Dao.registrarUsuario(user);
+		Dao.actualizarUsuario(user);
 	}
 	
 	

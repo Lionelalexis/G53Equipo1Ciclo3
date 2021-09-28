@@ -43,8 +43,8 @@ body {
 
 .card {
 
-    width: auto; margin: auto auto;
-    opacity: .8;
+    width: 400px; margin: auto auto;
+    opacity: .9;
 }
 
 .card-header {
@@ -67,8 +67,18 @@ body {
 
 .nav{
 	
-	background-color: silver;
+	background-color: white;
+		
+}
+
+.colorboton{
 	
+	background-color: purple;
+}
+
+.btn{
+	
+	width: 200px; margin: 0 auto;
 }
 
 
