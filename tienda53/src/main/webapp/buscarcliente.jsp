@@ -49,10 +49,10 @@
     <a class="nav-link" href="listaclientes.jsp"><i class="far fa-list-alt"></i> Clientes</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="listausuarios.jsp"><i class="fas fa-industry"></i> Proveedores</a>
+    <a class="nav-link" href="listaproveedores.jsp"><i class="fas fa-industry"></i> Proveedores</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="listausuarios.jsp"><i class="fas fa-shopping-cart"></i> Productos</a>
+    <a class="nav-link" href="insertarproducto.jsp"><i class="fas fa-shopping-cart"></i> Productos</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="listausuarios.jsp"><i class="fas fa-search-dollar"></i> Ventas</a>
