@@ -1,5 +1,5 @@
 body {
-	background-image: url("fondo_tienda.jpg");
+	background-image: url("fondo5.jpg");
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -9,12 +9,11 @@ body {
 .navbar-laravel
 {
     box-shadow: 0 2px 4px rgba(0,0,0,.04);
-    background-color: beige
-}
+    background-color: rgb(0, 255, 0)}
 
 .navbar-brand , .nav-link, .my-form, .login-form
 {
-    font-family: Raleway, sans-serif;
+    font-family: Raleway, !important;
 }
 
 .my-form
