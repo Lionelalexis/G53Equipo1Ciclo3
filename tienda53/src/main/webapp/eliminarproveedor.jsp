@@ -55,7 +55,7 @@
     <a class="nav-link" href="insertarproducto.jsp"><i class="fas fa-shopping-cart"></i> Productos</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="listausuarios.jsp"><i class="fas fa-search-dollar"></i> Ventas</a>
+    <a class="nav-link" href="insertarventa.jsp"><i class="fas fa-search-dollar"></i> Ventas</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="listausuarios.jsp"><i class="far fa-clipboard"></i> Reportes</a>

@@ -56,7 +56,7 @@
     <a class="nav-link" href="insertarproducto.jsp"><i class="fas fa-shopping-cart"></i> Productos</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="listausuarios.jsp"><i class="fas fa-search-dollar"></i> Ventas</a>
+    <a class="nav-link" href="insertarventa"><i class="fas fa-search-dollar"></i> Ventas</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="listausuarios.jsp"><i class="far fa-clipboard"></i> Reportes</a>
@@ -94,7 +94,7 @@
 				<div class="input-group mb-3">
 					<span class="input-group-text" id="basic-addon3">Nombre completo</span>
 					<input type="text" class="form-control"
-						placeholder="Inserte nonbre aqui..."
+						placeholder="Inserte nombre aqui..."
 						aria-describedby="basic-addon3" required id="nombre_usuario">
 				</div>
 
