@@ -29,7 +29,7 @@ public class ProveedorController {
 	}
 
 	@GetMapping("/consultarproveedor")
-	public ArrayList<ProveedorVO> consultarProveedor(String nit_proveedor) {
+	public ArrayList<ProveedorVO> consultarProveedor(Integer nit_proveedor) {
 		ProveedorDAO Dao = new ProveedorDAO();
 		return Dao.consultarProveedor(nit_proveedor);
 	}

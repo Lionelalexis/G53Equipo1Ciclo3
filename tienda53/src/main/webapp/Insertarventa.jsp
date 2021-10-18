@@ -10,7 +10,7 @@
 <!-- Tamaño de la pantalla -->
 <meta name="viewport" content="width=device-width">
 <!-- titulo de la pestaña -->
-<title>Insertando usuario</title>
+<title>Insertando Ventas</title>
 <!-- bootstrap-->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -65,20 +65,27 @@
 
 	<div style="padding-left: 5px">
 		<h1 class="colortitulos">
-			<i class="fas fa-plus-circle"></i> Datos del nuevo usuario
+			<i class="fas fa-plus-circle"></i> Datos de La venta
 		</h1>
 		<div class="container">
 		
 		
 			<div id="error" class="alert alert-danger visually-hidden"
-					role="alert">Error al crear el usuario, verifique que no exista un usuario con la cedula y usuario dados</div>
+					role="alert">Error al crear la venta, verifique que no exista un usuario con la cedula y usuario dados</div>
 					
 			<div id="correcto" class="alert alert-success visually-hidden"
-				role="alert">Usuario creado con exito</div>
+				role="alert">Venta creada con exito</div>
 
 			<form id="form1">
 				<div class="input-group mb-3">
-					<span class="input-group-text" id="basic-addon1">Cedula</span> <input
+					<span class="input-group-text" id="basic-addon1">Consecutivo </span> <input
+						type="text" class="form-control"
+						placeholder= Consecutivo
+						aria-describedby="basic-addon1" required id="consecutivo">
+                  
+                  <form id="form1">
+				<div class="input-group mb-3">
+					<span class="input-group-text" id="basic-addon1">cedula cliente</span> <input
 						type="text" class="form-control"
 						placeholder="Inserte cedula aqui..."
 						aria-describedby="basic-addon1" required id="cedula_usuario">

@@ -29,6 +29,9 @@
 
 
 <script>
+//var getUrl = window.location;
+//var baseUrl = getUrl.protol +"//"+ getUrl.host + "/"+ getUrl.pathname.split('/')[1];
+
 	var baseurl = "http://localhost:8080/listarusuarios";
 	function loadusuarios() {
 		var xmlhttp = new XMLHttpRequest();

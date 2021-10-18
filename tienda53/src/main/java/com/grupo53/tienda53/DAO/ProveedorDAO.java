@@ -60,7 +60,7 @@ public class ProveedorDAO {
 	 * @param documento
 	 * @return
 	 */
-	public ArrayList<ProveedorVO> consultarProveedor(String nit_proveedor) {	
+	public ArrayList<ProveedorVO> consultarProveedor(Integer nit_proveedor) {	
 		//lista que contendra el o los usuarios obtenidos
 		ArrayList<ProveedorVO> listaproveedores = new ArrayList<ProveedorVO>();		
 		//instancia de la conexión
@@ -70,7 +70,7 @@ public class ProveedorDAO {
 			PreparedStatement consulta = conex.getConnection()
 					.prepareStatement("SELECT * FROM proveedores where nit_proveedor = ? ");		
 			// se cambia el comodin ? por el dato que ha llegado en el parametro de la funcion
-			consulta.setString(1, nit_proveedor);			
+			consulta.setInt(1, nit_proveedor);			
 			//ejecute la sentencia
 			ResultSet res = consulta.executeQuery();			
 			//cree un objeto basado en la clase entidad con los datos encontrados

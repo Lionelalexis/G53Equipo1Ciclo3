@@ -159,10 +159,14 @@
 	<script>
 		function enviar() {
 
-				
+			//var getUrl = window.location;
+			//var baseUrl = getUrl.protol +"//"+ getUrl.host + "/"+ getUrl.pathname.split('/')[1];				
+			//baseUrl+"= "http://localhost:8080"
+			
 				var req = new XMLHttpRequest();
 				var coincidencia = false;
 				var ID=   document.getElementById("identification").value;
+				//req.open('GET', baseUrl+"/consultarproveedor?nit_proveedor="+ID, false);
 				req.open('GET', 'http://localhost:8080/consultarproveedor?nit_proveedor='+ID, false);
 				req.send(null);
 				var nit_proveedor = null;

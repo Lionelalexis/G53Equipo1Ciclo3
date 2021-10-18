@@ -160,9 +160,9 @@
 					var arrayLineas = text.split("\n");
 
 					var xhr = new XMLHttpRequest();
-					xhr.open("DELETE",
-							"http://localhost:8080/eliminartodoproducto",true);
-					xhr.send(formData);
+					xhr.open("DELETE",	"http://localhost:8080/eliminartodoproducto",
+							true);
+					xhr.send();
 
 					for (var i = 0; i < arrayLineas.length; i += 1) {
 						var arraydatos = arrayLineas[i].split(",");
@@ -182,10 +182,8 @@
 						formData.append("precio_compra", arraydatos[3]);
 						formData.append("iva_compra", arraydatos[4]);
 						formData.append("precio_venta", arraydatos[5]);
-						ProductoVO produc=new ProductoVO();
 						var xhr = new XMLHttpRequest();
-						xhr.open("POST",
-								"http://localhost:8080/registrarproducto");
+						xhr.open("POST","http://localhost:8080/registrarproducto");
 
 						xhr.send(formData);
 					}

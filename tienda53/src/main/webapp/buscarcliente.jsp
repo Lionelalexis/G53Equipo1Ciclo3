@@ -161,10 +161,14 @@
 	<script>
 		function enviar() {
 
-				
+			//var getUrl = window.location;
+			//var baseUrl = getUrl.protol +"//"+ getUrl.host + "/"+ getUrl.pathname.split('/')[1];				
+			
+			
 				var req = new XMLHttpRequest();
 				var coincidencia = false;
 				var ID=   document.getElementById("identification").value;
+				//req.open('GET', baseUrl+"/consultarcliente?cedula_cliente="+ID, false);
 				req.open('GET', 'http://localhost:8080/consultarcliente?cedula_cliente='+ID, false);
 				req.send(null);
 				var cedula_cliente = null;

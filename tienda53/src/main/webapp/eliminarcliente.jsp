@@ -127,9 +127,14 @@
 
 	<script>
 		function eliminar() {
+			//var getUrl = window.location;
+			//var baseUrl = getUrl.protol +"//"+ getUrl.host + "/"+ getUrl.pathname.split('/')[1];				
+			//baseUrl+"= "http://localhost:8080"
+			
 			var y = document.getElementById("cedula_cliente").value;
 			var req = new XMLHttpRequest();
 			var coincidencia = false;
+			//req.open('GET', baseUrl+"/listarclientes", false);
 			req.open('GET', 'http://localhost:8080/listarclientes', false);
 			req.send(null);
 			var clientes = null;
@@ -154,6 +159,7 @@
 				var cedula=document.getElementById("cedula_cliente").value;
 				
 				var xhr = new XMLHttpRequest();
+				//xhr.open("DELETE", baseUrl+"/eliminarcliente?cedula_cliente="+cedula);
 				xhr.open("DELETE", "http://localhost:8080/eliminarcliente?cedula_cliente="+cedula);
 				
 				var element = document.getElementById("error");

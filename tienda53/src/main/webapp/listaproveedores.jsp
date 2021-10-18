@@ -10,7 +10,7 @@
 <!-- Tamaño de la pantalla -->
 <meta name="viewport" content="width=device-width">
 <!-- titulo de la pestaña -->
-<title>Lista de clientes</title>
+<title>Lista de Proveedores</title>
 <!-- bootstrap-->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -29,6 +29,8 @@
 
 
 <script>
+//var getUrl = window.location;
+//var baseUrl = getUrl.protol +"//"+ getUrl.host + "/"+ getUrl.pathname.split('/')[1];
 	var baseurl = "http://localhost:8080/listarproveedores";
 	function loadproveedores() {
 		var xmlhttp = new XMLHttpRequest();
