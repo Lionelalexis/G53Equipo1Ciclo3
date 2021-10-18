@@ -136,7 +136,7 @@
 										<div class="input-group input-group-sm mb-3">
 											<span class="input-group-text"><i id="checkusuario"
 												class="fas fa-times text-danger"></i></span> <span
-												class="input-group-text" id="basic-addon1">Username
+												class="input-group-text" id="basic-addon1">nombre
 												usuario</span> <input type="text" class="form-control"
 												id="cedula_usuario" oninput="traerNombreUsuario()">
 										</div>
