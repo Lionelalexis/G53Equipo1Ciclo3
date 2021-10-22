@@ -181,10 +181,14 @@ public class VentaDAO {
 
 		try {
 			// prepare la sentencia en la base de datos
+			//PreparedStatement consulta = conex.getConnection()
+					//.prepareStatement("SELECT `AUTO_INCREMENT` " + "FROM  INFORMATION_SCHEMA.TABLES "
+							//+ "WHERE TABLE_SCHEMA = 'g53e1' " + "AND   TABLE_NAME   = 'ventas';");
 			PreparedStatement consulta = conex.getConnection()
 					.prepareStatement("SELECT `AUTO_INCREMENT` " + "FROM  INFORMATION_SCHEMA.TABLES "
 							+ "WHERE TABLE_SCHEMA = 'tienda53grupo1' " + "AND   TABLE_NAME   = 'ventas';");
-
+			
+			
 			// ejecute la sentencia
 			ResultSet res = consulta.executeQuery();
 
