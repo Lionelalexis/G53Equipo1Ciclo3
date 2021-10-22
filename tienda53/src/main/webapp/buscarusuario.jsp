@@ -55,7 +55,7 @@
     <a class="nav-link" href="insertarproducto.jsp"><i class="fas fa-shopping-cart"></i> Productos</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="insertarventa.jsp"><i class="fas fa-search-dollar"></i> Ventas</a>
+    <a class="nav-link" href="listausuarios.jsp"><i class="fas fa-search-dollar"></i> Ventas</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="listausuarios.jsp"><i class="far fa-clipboard"></i> Reportes</a>
@@ -160,14 +160,11 @@
 
 	<script>
 		function enviar() {
-			//var getUrl = window.location;
-			//var baseUrl = getUrl.protol +"//"+ getUrl.host + "/"+ getUrl.pathname.split('/')[1];				
-			//baseUrl+"= "http://localhost:8080"
+
 				
 				var req = new XMLHttpRequest();
 				var coincidencia = false;
 				var user=   document.getElementById("usersearch").value;
-				//req.open('GET', baseUrl+"/consultarusuario?usuario="+user, false);
 				req.open('GET', 'http://localhost:8080/consultarusuario?usuario='+user, false);
 				req.send(null);
 				var usuario = null;

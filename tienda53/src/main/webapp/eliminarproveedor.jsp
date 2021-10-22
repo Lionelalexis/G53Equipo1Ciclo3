@@ -55,7 +55,7 @@
     <a class="nav-link" href="insertarproducto.jsp"><i class="fas fa-shopping-cart"></i> Productos</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="insertarventa.jsp"><i class="fas fa-search-dollar"></i> Ventas</a>
+    <a class="nav-link" href="listausuarios.jsp"><i class="fas fa-search-dollar"></i> Ventas</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="listausuarios.jsp"><i class="far fa-clipboard"></i> Reportes</a>
@@ -127,15 +127,9 @@
 
 	<script>
 		function eliminar() {
-			
-			//var getUrl = window.location;
-			//var baseUrl = getUrl.protol +"//"+ getUrl.host + "/"+ getUrl.pathname.split('/')[1];				
-			
-			
 			var y = document.getElementById("nit_proveedor").value;
 			var req = new XMLHttpRequest();
 			var coincidencia = false;
-			//req.open('GET', baseUrl+"/listarproveedores", false);
 			req.open('GET', 'http://localhost:8080/listarproveedores', false);
 			req.send(null);
 			var proveedores = null;
@@ -147,7 +141,7 @@
 				
 				console.log(proveedores[i].nit_proveedor);
 				
-				if (proveedores[i].nit_proveedor == y)) {
+				if (proveedores[i].nit_proveedor ===parseInt(y,10)) {
 					console.log(proveedores[i].nit_proveedor +" "+y);					
 					coincidencia =true
 					break;
@@ -160,8 +154,8 @@
 				var nit=document.getElementById("nit_proveedor").value;
 				
 				var xhr = new XMLHttpRequest();
-				//xhr.open("DELETE", baseUrl+"/eliminarproveedor?nit_proveedor="+nit);
 				xhr.open("DELETE", "http://localhost:8080/eliminarproveedor?nit_proveedor="+nit);
+				
 				var element = document.getElementById("error");
 				element.classList.add("visually-hidden");
 				

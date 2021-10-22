@@ -55,7 +55,7 @@
     <a class="nav-link" href="insertarproducto.jsp"><i class="fas fa-shopping-cart"></i> Productos</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="insertarventa.jsp"><i class="fas fa-search-dollar"></i> Ventas</a>
+    <a class="nav-link" href="listausuarios.jsp"><i class="fas fa-search-dollar"></i> Ventas</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="listausuarios.jsp"><i class="far fa-clipboard"></i> Reportes</a>
@@ -150,14 +150,9 @@
 	<script>
 		function actualizar() {
 			
-			//var getUrl = window.location;
-			//var baseUrl = getUrl.protol +"//"+ getUrl.host + "/"+ getUrl.pathname.split('/')[1];				
-			//baseUrl+"= "http://localhost:8080"
-			
 			var y = document.getElementById("nit_proveedor").value;
 			var req = new XMLHttpRequest();
 			var coincidencia = false;
-			//req.open('GET', baseUrl+"/listarproveedores", false);
 			req.open('GET', 'http://localhost:8080/listarproveedores', false);
 			req.send(null);
 			var proveedores = null;
@@ -169,8 +164,8 @@
 				
 				console.log(proveedores[i].nit_proveedor);
 				
-				if (proveedores[i].nit_proveedor ==y)) {
-					console.log(proveedores[i].nit_proveedor +" "+ y);					
+				if (proveedores[i].nit_proveedor ===parseInt(y,10)) {
+					console.log(proveedores[i].nit_proveedor +" "+y);					
 					coincidencia =true
 					break;
 				}
@@ -186,7 +181,6 @@
 	 			formData.append("telefono_proveedor",document.getElementById("telefono_proveedor").value);
 	 			formData.append("ciudad_proveedor",document.getElementById("ciudad_proveedor").value);
 				var xhr = new XMLHttpRequest();
-				//xhr.open("PUT", baseUrl+"/actualizarproveedor");
 				xhr.open("PUT", "http://localhost:8080/actualizarproveedor");
 
 				var element = document.getElementById("error");
