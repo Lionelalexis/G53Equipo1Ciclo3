@@ -55,7 +55,7 @@
     <a class="nav-link" href="insertarproducto.jsp"><i class="fas fa-shopping-cart"></i> Productos</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="listausuarios.jsp"><i class="fas fa-search-dollar"></i> Ventas</a>
+    <a class="nav-link" href="insertarventa.jsp"><i class="fas fa-search-dollar"></i> Ventas</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="listausuarios.jsp"><i class="far fa-clipboard"></i> Reportes</a>
@@ -150,9 +150,14 @@
 	<script>
 		function actualizar() {
 			
+			//var getUrl = window.location;
+			//var baseUrl = getUrl.protol +"//"+ getUrl.host + "/"+ getUrl.pathname.split('/')[1];
+			//baseUrl+"/
+			//baseUrl = "http://localhost:8080"
 			var y = document.getElementById("cedula_cliente").value;
 			var req = new XMLHttpRequest();
 			var coincidencia = false;
+			//req.open('GET', baseUrl+"/listarclientes", false);
 			req.open('GET', 'http://localhost:8080/listarclientes', false);
 			req.send(null);
 			var clientes = null;
@@ -164,7 +169,7 @@
 				
 				console.log(clientes[i].cedula_cliente);
 				
-				if (clientes[i].cedula_cliente ===parseInt(y,10)) {
+				if (clientes[i].cedula_cliente ==y)) {
 					console.log(clientes[i].cedula_cliente +" "+y);					
 					coincidencia =true
 					break;
@@ -181,6 +186,7 @@
 	 			formData.append("telefono_cliente",document.getElementById("telefono_cliente").value);
 	 			formData.append("email_cliente",document.getElementById("email_cliente").value);
 				var xhr = new XMLHttpRequest();
+				//xhr.open("PUT", baseUrl+"/actualizarcliente");
 				xhr.open("PUT", "http://localhost:8080/actualizarcliente");
 
 				var element = document.getElementById("error");

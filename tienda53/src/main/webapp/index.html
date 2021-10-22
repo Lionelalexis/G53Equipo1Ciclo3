@@ -46,7 +46,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header"><center><i class="fas fa-user">&nbsp</i>Iniciar sesion</center></div>
+                    <div class="card-header"><center><i class="fas fa-user">&nbsp</i>Bienvenidos a mi tienda</center></div>
                     <div class="card-body">
                         <form action="" method="">
                             
@@ -95,20 +95,30 @@
 
 	<script>
 		function comparar() {
+			
+			
 			//trayendo texto de input de username
 			var x = document.getElementById("inputuser").value;
 			//trayendo texto de input de password
 			var y = document.getElementById("inputpass").value;
 			//url de la api 
-			var baseurl = "http://localhost:8080/listarusuarios";
+			
+			//var baseurl = "http://localhost:8080/listarusuarios";
 			//creando un objeto de manipulacion de solicitudes
-			var xmlhttp = new XMLHttpRequest();
+			//var xmlhttp = new XMLHttpRequest();
 			//abriendo la api
-			xmlhttp.open("GET", baseurl, true);
+			
+			
+			//var getUrl = window.location;
+			//var baseUrl = getUrl.protol +"//"+ getUrl.host + "/"+ getUrl.pathname.split('/')[1];
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.open("GET","http://localhost:8080/listarusuarios", true);
+			//xmlhttp.open("GET", baseUrl+"/listarusuarios", true);
+			
 			//funcion interna que compara la información
 			xmlhttp.onreadystatechange = function() {
 				//si se obtiene un 200 (Conexion correcta)
-				if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 					//convirtiendo JSON en variable javascrip
 					var usuarios = JSON.parse(xmlhttp.responseText);
 					
@@ -123,9 +133,9 @@
 						console.log(usuarios[i].password);
 						
 						//si el nombre coincide
-						if (usuarios[i].usuario === x) {
+						if (usuarios[i].usuario == x) {
 							//si la clave coincide
-							if (usuarios[i].password === y) {
+							if (usuarios[i].password == y) {
 								console.log("si");
 								var element = document.getElementById("error");
 								element.classList.add("visually-hidden");

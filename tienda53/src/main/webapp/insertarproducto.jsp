@@ -27,6 +27,8 @@
 <!-- Cargando mi hoja de estilo -->
 <link href="style.css" rel="stylesheet" type="text/css" />
 
+<jsp:useBean id="link" scope="application" class = "com.grupo53.tienda53.DTO.ProductoVO" />
+
 <script>
 	var baseurl = "http://localhost:8080/listarproductos";
 	function loadproductos() {
@@ -83,7 +85,7 @@
     <a class="nav-link" href="insertarproducto.jsp"><i class="fas fa-shopping-cart"></i> Productos</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="listausuarios.jsp"><i class="fas fa-search-dollar"></i> Ventas</a>
+    <a class="nav-link" href="insertarventa.jsp"><i class="fas fa-search-dollar"></i> Ventas</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="listausuarios.jsp"><i class="far fa-clipboard"></i> Reportes</a>
@@ -158,8 +160,8 @@
 					var arrayLineas = text.split("\n");
 
 					var xhr = new XMLHttpRequest();
-					xhr.open("DELETE",
-							"http://localhost:8080/eliminartodoproducto",true);
+					xhr.open("DELETE",	"http://localhost:8080/eliminartodoproducto",
+							true);
 					xhr.send();
 
 					for (var i = 0; i < arrayLineas.length; i += 1) {
@@ -181,8 +183,7 @@
 						formData.append("iva_compra", arraydatos[4]);
 						formData.append("precio_venta", arraydatos[5]);
 						var xhr = new XMLHttpRequest();
-						xhr.open("POST",
-								"http://localhost:8080/registrarproducto");
+						xhr.open("POST","http://localhost:8080/registrarproducto");
 
 						xhr.send(formData);
 					}
