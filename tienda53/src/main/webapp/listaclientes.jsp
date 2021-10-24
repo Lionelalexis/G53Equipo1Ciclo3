@@ -29,10 +29,12 @@
 
 
 <script>
-	var baseurl = "http://localhost:8080/listarclientes";
+	var getUrl = window.location;
+	var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+	var baseurll = baseUrl + "/listarclientes";
 	function loadclientes() {
 		var xmlhttp = new XMLHttpRequest();
-		xmlhttp.open("GET", baseurl, true);
+		xmlhttp.open("GET", baseurll, true);
 		xmlhttp.onreadystatechange = function() {
 			if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
 				var clientes = JSON.parse(xmlhttp.responseText);
@@ -83,10 +85,10 @@
     <a class="nav-link" href="insertarproducto.jsp"><i class="fas fa-shopping-cart"></i> Productos</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="listausuarios.jsp"><i class="fas fa-search-dollar"></i> Ventas</a>
+	<a class="nav-link" href="insertarventa.jsp"><i	class="fas fa-search-dollar"></i> Ventas</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="listausuarios.jsp"><i class="far fa-clipboard"></i> Reportes</a>
+  	<a class="nav-link" href="Reportes.jsp"><i class="far fa-clipboard"></i> Reportes</a>
   </li>
 </ul>
 	
@@ -110,23 +112,23 @@
 			<div class="container">
 				<div class="row">
 					<button type="button" class="btn btn-success"
-						onclick="window.location.href='/insertarcliente.jsp'">
+						onclick="window.location.href='<%=request.getContextPath()%>/insertarcliente.jsp'">
 						<i class="fas fa-plus-circle"></i> Agregar cliente
 					</button>
 					<button type="button" class="btn btn-danger"
-						onclick="window.location.href='/eliminarcliente.jsp'">
+						onclick="window.location.href='<%=request.getContextPath()%>/eliminarcliente.jsp'">
 						<i class="fas fa-trash"></i> Eliminar cliente
 					</button>
 					<button type="button" class="btn btn-warning"
-						onclick="window.location.href='/actualizarcliente.jsp'">
+						onclick="window.location.href='<%=request.getContextPath()%>/actualizarcliente.jsp'">
 						<i class="fas fa-pen-alt"></i> Actualizar cliente
 					</button>
 					<button type="button" class="btn btn-primary"
-						onclick="window.location.href='/buscarcliente.jsp'">
+						onclick="window.location.href='<%=request.getContextPath()%>/buscarcliente.jsp'">
 						<i class="fas fa-search"></i> Buscar un cliente
 					</button>
 					<button type="button" class="btn btn-primary colorboton"
-						onclick="window.location.href='/listaclientes.jsp'">
+						onclick="window.location.href='<%=request.getContextPath()%>/listaclientes.jsp'">
 						<i class="fas fa-search"></i> Listar todos los clientes
 					</button>
 				</div>

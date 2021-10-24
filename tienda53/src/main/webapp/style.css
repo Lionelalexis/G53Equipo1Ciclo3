@@ -41,19 +41,19 @@ body {
     margin-right: 0;
 }
 
-.card {
+.cardd {
 
     width: 400px; margin: auto auto;
     opacity: .9;
 }
 
-.card-header {
+.card-headerr {
 
   background-color: rgb(226, 226, 226);
 
 }
 
-.card-body {
+.card-bodyy {
 
   background-color: aliceblue;
   
@@ -78,7 +78,17 @@ body {
 
 .btn{
 	
-	width: 200px; margin: 0 auto;
+	width: auto; margin: 0 auto;
+}
+
+.alineacion{
+	width: 420px; margin: auto 820px ;
+}
+
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 

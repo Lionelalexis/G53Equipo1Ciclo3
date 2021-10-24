@@ -28,10 +28,12 @@
 <link href="style.css" rel="stylesheet" type="text/css" />
 
 <script>
-	var baseurl = "http://localhost:8080/listarproductos";
+	var getUrl = window.location;
+	var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+	var baseurll = baseUrl + "/listarproductos";
 	function loadproductos() {
 		var xmlhttp = new XMLHttpRequest();
-		xmlhttp.open("GET", baseurl, true);
+		xmlhttp.open("GET", baseurll, true);
 		xmlhttp.onreadystatechange = function() {
 			if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
 				var productos = JSON.parse(xmlhttp.responseText);
@@ -83,10 +85,10 @@
     <a class="nav-link" href="insertarproducto.jsp"><i class="fas fa-shopping-cart"></i> Productos</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="listausuarios.jsp"><i class="fas fa-search-dollar"></i> Ventas</a>
+	<a class="nav-link" href="insertarventa.jsp"><i	class="fas fa-search-dollar"></i> Ventas</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="listausuarios.jsp"><i class="far fa-clipboard"></i> Reportes</a>
+  	<a class="nav-link" href="Reportes.jsp"><i class="far fa-clipboard"></i> Reportes</a>
   </li>
 </ul>
 
@@ -131,7 +133,7 @@
 			<div class="container">
 				<div class="row">					
 					<button type="button" class="btn btn-primary colorboton"
-						onclick="window.location.href='/insertarproducto.jsp'">
+						onclick="window.location.href='<%=request.getContextPath()%>/insertarproducto.jsp'">
 						<i class="fas fa-search"></i> Mostrar Productos Cargados
 					</button>
 				</div>
@@ -145,7 +147,9 @@
 		function subirArchivo() {
 
 			try {
-
+				var getUrl = window.location;
+				var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+				
 				var csvFile = document.getElementById("archivo");
 
 				var input = csvFile.files[0];
@@ -159,7 +163,7 @@
 
 					var xhr = new XMLHttpRequest();
 					xhr.open("DELETE",
-							"http://localhost:8080/eliminartodoproducto",true);
+							baseUrl + "/eliminartodoproducto",true);
 					xhr.send();
 
 					for (var i = 0; i < arrayLineas.length; i += 1) {
@@ -182,7 +186,7 @@
 						formData.append("precio_venta", arraydatos[5]);
 						var xhr = new XMLHttpRequest();
 						xhr.open("POST",
-								"http://localhost:8080/registrarproducto");
+								baseUrl + "/registrarproducto");
 
 						xhr.send(formData);
 					}

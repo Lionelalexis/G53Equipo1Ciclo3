@@ -31,31 +31,36 @@
 <script>
 	var getUrl = window.location;
 	var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
-	var baseurll =  baseUrl + "/listarproveedores";
-	function loadproveedores() {
+	var baseurll = baseUrl + "/listarventasclientes";
+	function loadclientes() {
 		var xmlhttp = new XMLHttpRequest();
 		xmlhttp.open("GET", baseurll, true);
 		xmlhttp.onreadystatechange = function() {
 			if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-				var proveedores = JSON.parse(xmlhttp.responseText);
-				var tbltop = "<table class='table table-dark table-striped'><tr><th>NIT</th><th>Nombre Proveedor</th><th>Direccion</th><th>Telefono</th><th>Ciudad</th></tr>";
+				var clientes = JSON.parse(xmlhttp.responseText);
+				var tbltop = "<table class='table table-dark table-striped'><tr><th>Cedula</th><th>Nombre Cliente</th><th>Valor Total Ventas</th></tr>";
 				var main = "";
-				for (i = 0; i < proveedores.length; i++) {
-					main += "<tr><td>" + proveedores[i].nit_proveedor
-							+ "</td><td>" + proveedores[i].nombre_proveedor
-							+ "</td><td>" + proveedores[i].direccion_proveedor
-							+ "</td><td>" + proveedores[i].telefono_proveedor + "</td><td>"
-							+ proveedores[i].ciudad_proveedor + "</td></tr>";
+				var suma = 0;
+				for (i = 0; i < clientes.length; i++) {
+					main += "<tr><td>" + clientes[i].cedula_cliente
+							+ "</td><td>" + clientes[i].nombre_cliente + "</td><td>"
+							+ clientes[i].valor_venta + "</td></tr>";
 				}
+				
+				for (i = 0; i < clientes.length; i++){
+					suma = suma + ((clientes[i].valor_venta) * 100 );
+				}
+					
 				var tblbottom = "</table>";
 				var tbl = tbltop + main + tblbottom;
-				document.getElementById("proveedoresinfo").innerHTML = tbl;
+				document.getElementById("clientesinfo").innerHTML = tbl;
+				document.getElementById("valor_total").value = suma / 100;
 			}
 		};
 		xmlhttp.send();
 	}
 	window.onload = function() {
-		loadproveedores();
+		loadclientes();
 	}
 </script>
 
@@ -97,46 +102,26 @@
 	
 	<div style="padding-left: 5px;">
 	
-		<h1 class="colortitulos"><i class="fas fa-list-ol"></i> Tabla de Proveedores</h1>
+		<h1 class="color-blue text-center"><i class="fas fa-list-ol"></i> Total de Ventas por Cliente</h1>
 			<div class="container">
 				<div class="row">
 					<!--  Aqui es donde se autogenera la tabla basado en el script -->
-					<div class="col align-self-center" id="proveedoresinfo">
+					<div class="col align-self-center" id="clientesinfo">
 					
 					</div>
 	
 				</div>
 			</div>
+			
+			
+									<div class="inlineLeft">
+										<div class="input-group input-group-sm mb-10 alineacion">
+											<span class="input-group-text" id="basic-addon1">Total Ventas $</span>
+											<input type="text" class="form-control" readonly="readonly"
+												id="valor_total">
+										</div>
+									</div>
 	
-		<h1 class="colortitulos"><i class="fas fa-cogs"></i> Operaciones</h1>
-			<div class="container">
-				<div class="row">
-					<button type="button" class="btn btn-success"
-						onclick="window.location.href='<%=request.getContextPath()%>/insertarproveedor.jsp'">
-						<i class="fas fa-plus-circle"></i> Agregar proveedor
-					</button>
-					<button type="button" class="btn btn-danger"
-						onclick="window.location.href='<%=request.getContextPath()%>/eliminarproveedor.jsp'">
-						<i class="fas fa-trash"></i> Eliminar proveedor
-					</button>
-					<button type="button" class="btn btn-warning"
-						onclick="window.location.href='<%=request.getContextPath()%>/actualizarproveedor.jsp'">
-						<i class="fas fa-pen-alt"></i> Actualizar proveedor
-					</button>
-					<button type="button" class="btn btn-primary"
-						onclick="window.location.href='<%=request.getContextPath()%>/buscarproveedor.jsp'">
-						<i class="fas fa-search"></i> Buscar un proveedor
-					</button>
-					<button type="button" class="btn btn-primary colorboton"
-						onclick="window.location.href='<%=request.getContextPath()%>/listaproveedores.jsp'">
-						<i class="fas fa-search"></i> Listar todos los proveedores
-					</button>
-				</div>
-			</div>
-	</div>
-
-
-
 
 </body>
 </html>

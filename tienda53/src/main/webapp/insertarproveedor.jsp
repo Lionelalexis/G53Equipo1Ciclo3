@@ -56,10 +56,10 @@
     <a class="nav-link" href="insertarproducto.jsp"><i class="fas fa-shopping-cart"></i> Productos</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="listausuarios.jsp"><i class="fas fa-search-dollar"></i> Ventas</a>
+	<a class="nav-link" href="insertarventa.jsp"><i	class="fas fa-search-dollar"></i> Ventas</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="listausuarios.jsp"><i class="far fa-clipboard"></i> Reportes</a>
+  	<a class="nav-link" href="Reportes.jsp"><i class="far fa-clipboard"></i> Reportes</a>
   </li>
 </ul>
 
@@ -131,23 +131,23 @@
 			<div class="container">
 				<div class="row">
 					<button type="button" class="btn btn-success"
-						onclick="window.location.href='/insertarproveedor.jsp'">
+						onclick="window.location.href='<%=request.getContextPath()%>/insertarproveedor.jsp'">
 						<i class="fas fa-plus-circle"></i> Agregar proveedor
 					</button>
 					<button type="button" class="btn btn-danger"
-						onclick="window.location.href='/eliminarproveedor.jsp'">
+						onclick="window.location.href='<%=request.getContextPath()%>/eliminarproveedor.jsp'">
 						<i class="fas fa-trash"></i> Eliminar proveedor
 					</button>
 					<button type="button" class="btn btn-warning"
-						onclick="window.location.href='/actualizarproveedor.jsp'">
+						onclick="window.location.href='<%=request.getContextPath()%>/actualizarproveedor.jsp'">
 						<i class="fas fa-pen-alt"></i> Actualizar proveedor
 					</button>
 					<button type="button" class="btn btn-primary"
-						onclick="window.location.href='/buscarproveedor.jsp'">
+						onclick="window.location.href='<%=request.getContextPath()%>/buscarproveedor.jsp'">
 						<i class="fas fa-search"></i> Buscar un proveedor
 					</button>
 					<button type="button" class="btn btn-primary colorboton"
-						onclick="window.location.href='/listaproveedores.jsp'">
+						onclick="window.location.href='<%=request.getContextPath()%>/listaproveedores.jsp'">
 						<i class="fas fa-search"></i> Listar todos los proveedores
 					</button>
 				</div>
@@ -158,11 +158,13 @@
 	
 	<script>
 		function enviar() {
+			var getUrl = window.location;
+			var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
 			
 			var y = document.getElementById("nit_proveedor").value;
 			var req = new XMLHttpRequest();
 			var coincidencia = false;
-			req.open('GET', 'http://localhost:8080/listarproveedores', false);
+			req.open('GET', baseUrl + '/listarproveedores', false);
 			req.send(null);
 			var proveedores=null;
 			
@@ -193,7 +195,7 @@
 	 			formData.append("telefono_proveedor",document.getElementById("telefono_proveedor").value);
 	 			formData.append("ciudad_proveedor",document.getElementById("ciudad_proveedor").value);
 	 			var xhr = new XMLHttpRequest();
-	 			xhr.open("POST", "http://localhost:8080/registrarproveedor");
+	 			xhr.open("POST", baseUrl + "/registrarproveedor");
 	 			
 				var element = document.getElementById("error");
 				element.classList.add("visually-hidden");
